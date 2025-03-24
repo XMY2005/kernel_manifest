@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-export CONFIG="gt5pro"
-export ANYKERNEL_BRANCH="android14-6.1"
-export SUSFS_BRANCH="gki-android14-6.1"
+export CONFIG="gt7pro"
+export ANYKERNEL_BRANCH="android14-6.6"
+export SUSFS_BRANCH="gki-android14-6.6"
 export SUSFS_VERSION="v1.5.5"
 
 sudo apt-get update
@@ -15,8 +15,8 @@ chmod a+x ./git-repo/repo
 
 mkdir -p "$CONFIG"
 cd "$CONFIG"
-../git-repo/repo init -u https://github.com/ferstar/kernel_manifest.git \
-    -b realme/sm8650 -m ${CONFIG}.xml --depth=1
+../git-repo/repo init -u https://github.com/XMY2005/kernel_manifest.git \
+    -b realme/sm8750 -m ${CONFIG}.xml --depth=1
 ../git-repo/repo sync -c -j$(nproc --all) --no-tags --fail-fast
 
 cd kernel_platform
