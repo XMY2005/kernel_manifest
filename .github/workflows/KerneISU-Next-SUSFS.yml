@@ -5,23 +5,23 @@ on:
       CPU:
         description: "处理器分支"
         required: true
-        default: 'sm8650'
+        default: 'sm8750'
       MANIFEST:
         description: "配置文件"
         required: true
-        default: 'gt5pro'
+        default: 'gt7pro'
       CPUD:
         description: "处理器代号"
         required: true
-        default: 'pineapple'
+        default: 'sun'
       ANDROID_VERSION:
         description: "内核安卓版本"
         required: true
-        default: 'android14'
+        default: 'android15'
       KERNEL_VERSION:
         description: "内核版本"
         required: true
-        default: '6.1'
+        default: '6.6'
       SUSFS_ENABLED:
         description: "添加 SUSFS"
         required: true
@@ -68,8 +68,8 @@ jobs:
           repo sync -c -j$(nproc --all) --no-tags --fail-fast
           rm kernel_platform/common/android/abi_gki_protected_exports_* || echo "No protected exports!"
           rm kernel_platform/msm-kernel/android/abi_gki_protected_exports_* || echo "No protected exports!"
-          sed -i 's|echo "\$res"|echo "-android14-11-o-${{ env.KVER }}"|' kernel_platform/common/scripts/setlocalversion
-          sed -i 's|echo "\$res"|echo "-android14-11-o-${{ env.KVER }}"|' kernel_platform/msm-kernel/scripts/setlocalversion
+          sed -i 's|echo "\$res"|echo "-android15-11-o-${{ env.KVER }}"|' kernel_platform/common/scripts/setlocalversion
+          sed -i 's|echo "\$res"|echo "-android15-11-o-${{ env.KVER }}"|' kernel_platform/msm-kernel/scripts/setlocalversion
           sed -i 's/ -dirty//g' kernel_platform/external/dtc/scripts/setlocalversion
           sed -i 's/SUBLEVEL = 68/SUBLEVEL = 75/' kernel_platform/msm-kernel/Makefile
 
